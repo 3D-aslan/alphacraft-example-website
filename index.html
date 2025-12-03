@@ -623,8 +623,8 @@
   }
 
   .project-card {
-    flex: 0 0 80%;      /* each card takes ~80% of the viewport width */
-    min-width: 80%;
+    flex: 0 0 50%;      /* each card takes ~80% of the viewport width */
+    min-width: 50%;
     scroll-snap-align: start;
   }
 
@@ -779,12 +779,85 @@
   z-index: 1;
 }
 
+  /* MOBILE: make the 4 service cards a horizontal slider */
+  .services-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .service-card {
+    flex: 0 0 30%;      /* each card is ~80% of screen */
+    min-width: 30%;
+    scroll-snap-align: start;
+  }
+
+
+  /* MOBILE: hide MEDIA section */
+  #media {
+    display: none;
+  }
+/* MOBILE: hide SEASONAL section */
+  #seasonal {
+    display: none;
+  }
+  
+   /* MOBILE: let WHY card grow with text, crop the background image instead */
+  #why .overlay-card {
+    background-image:
+      linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.25)),
+      url("image13.jpg");          /* same image you use now */
+    background-size: cover, cover;
+    background-position: center, center;
+  }
+
+  /* hide the <img> so the background handles the photo */
+  #why .overlay-card > img {
+    display: none;
+  }
+
+  /* make the text block normal flow (not absolutely positioned) */
+  #why .overlay-card-content {
+    position: static;              /* instead of absolute/inset:0 */
+    inset: auto;
+    padding: 1.8rem 1.8rem 2.2rem; /* keep same padding */
+    background: none;              /* gradient is now on the card itself */
+  }
+  /* MOBILE: let WHO card grow with text and crop the background image */
+#who .overlay-card {
+  background-image:
+    linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.25)),
+    url("image15.jpg");         /* same image used in the card */
+  background-size: cover, cover;
+  background-position: center, center;
+}
+
+/* hide the <img> inside the card so background controls the image */
+#who .overlay-card > img {
+  display: none;
+}
+
+/* ensure text sits normally inside and card expands with content */
+#who .overlay-card-content {
+  position: static;               /* remove absolute/inset */
+  inset: auto;
+  padding: 1.8rem 1.8rem 2.2rem;  /* same padding as desktop */
+  background: none;               /* gradient now in parent */
+}
+
+  
 
 
 
 
+  
 
 
+
+/*--------------------------------------------------------------------------------------------------------
 
 
     }
