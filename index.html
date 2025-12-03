@@ -1258,25 +1258,35 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const nav = document.querySelector(".top-nav");
-    const servicesSection = document.querySelector("#services");
+    if (!nav) return;
 
-    if (!nav || !servicesSection) return;
-
-    // point where nav should disappear
-    const stopAt = servicesSection.offsetTop - nav.offsetHeight;
+    let lastScrollY = window.scrollY;
 
     function handleScroll() {
-      if (window.scrollY > stopAt) {
-        nav.classList.add("hidden");   // hide nav
-      } else {
-        nav.classList.remove("hidden"); // show nav
+      const current = window.scrollY;
+
+      // Always show when at very top
+      if (current <= 0) {
+        nav.classList.remove("hidden");
+        lastScrollY = current;
+        return;
       }
+
+      if (current > lastScrollY && current > 80) {
+        // Scrolling DOWN → hide nav
+        nav.classList.add("hidden");
+      } else if (current < lastScrollY) {
+        // Scrolling UP → show nav
+        nav.classList.remove("hidden");
+      }
+
+      lastScrollY = current;
     }
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // run once on load
   });
 </script>
+
 
 
 
