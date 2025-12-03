@@ -34,15 +34,33 @@
     /* TOP NAV */
 
     .top-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.7);
-      border-bottom: 1px solid #e0e0e0;
-      backdrop-filter: blur(6px);
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid #e0e0e0;
+  backdrop-filter: blur(6px);
+
+  /* NEW: smooth slide when hiding */
+  transition: transform 0.25s ease;
+}
+
+/* NEW: hidden state – slide nav up out of view */
+.top-nav.hidden {
+  transform: translateY(-120%);
+}
+
+
+.top-nav.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
 
     .top-nav-inner {
   max-width: var(--max-width);
@@ -617,6 +635,26 @@
       .hero-title {
         font-size: 2rem;
       }
+	  #services {
+    background-image:
+      linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,1)),
+      url("image5.jpg");              /* REMODEL YOUR SPACE image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* hide the right-side images column on mobile */
+  .services-images {
+    display: none;
+  }
+
+  /* give text block a little background/padding so it sits nicely */
+  #services .section-inner {
+    backdrop-filter: none;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
     }
   </style>
 </head>
@@ -698,7 +736,7 @@
           </div>
         </div>
 
-        <div class="img-stack">
+            <div class="img-stack services-images">
           <div class="img-frame">
             <!-- image11: WE ARE TAKING PROJECTS -->
             <img src="image11.jpg" alt="We are taking projects – services list" />
@@ -986,6 +1024,31 @@
       </div>
     </section>
   </main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const nav = document.querySelector(".top-nav");
+    const servicesSection = document.querySelector("#services");
+
+    if (!nav || !servicesSection) return;
+
+    // point where nav should disappear
+    const stopAt = servicesSection.offsetTop - nav.offsetHeight;
+
+    function handleScroll() {
+      if (window.scrollY > stopAt) {
+        nav.classList.add("hidden");   // hide nav
+      } else {
+        nav.classList.remove("hidden"); // show nav
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // run once on load
+  });
+</script>
+
+
 
 </body>
 </html>
