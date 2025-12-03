@@ -414,12 +414,14 @@
 
     /* PROJECTS */
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.7rem;
-      margin-top: 1.5rem;
-    }
+    /* Default (desktop/tablet) */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+  gap: 1.7rem;
+  margin-top: 1.5rem;
+}
+
 
     .project-card {
       border-radius: 18px;
@@ -607,6 +609,24 @@
       .contact-layout {
         grid-template-columns: 1fr;
       }
+	  
+	  
+	  
+		  /* FEATURED PROJECTS – make it a horizontal slider on mobile */
+	.projects-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-card {
+    flex: 0 0 80%;      /* each card takes ~80% of the viewport width */
+    min-width: 80%;
+    scroll-snap-align: start;
+  }
 
 
       .img-stack .img-frame:nth-child(2) {
@@ -655,6 +675,118 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
+  
+   /* MOBILE: Make text appear ON TOP of the picture */
+#seasonal .section-inner {
+  position: relative;
+  display: block;
+  padding: 2rem 1rem;
+}
+
+/* Hide the original image card on mobile */
+#seasonal .img-frame {
+  display: none;
+}
+
+/* Add the background image behind the entire section */
+#seasonal .section-inner {
+  background-image: url("image4.jpg"); /* <-- UPDATE path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Make text readable on top of the image */
+#seasonal .section-inner * {
+  color: white !important;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Add a dark overlay so text is easier to read */
+#seasonal .section-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 0;
+}
+
+/* Bring text above the overlay */
+#seasonal .section-inner > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* MOBILE: Add soft background highlight behind the text */
+#seasonal .text-wrapper {
+  background: rgba(50, 50, 50, 0.90); /* translucent white */
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* MOBILE — Move left image above the text panel in the WHY section */
+#why .grid-why {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Make the left image smaller */
+#why .grid-why > div:first-child .img-frame {
+  max-width: 250px;     /* ← adjust size if you want */
+  margin: 0 auto;       /* center it */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  border-radius: 16px;
+}
+/* MOBILE: Hide the left image in the WHY section */
+#why .grid-why > div:first-child {
+  display: none;
+}
+/* MOBILE: Hide the left image in the WHO WE ARE section */
+#who .grid-who > div:first-child {
+  display: none;
+}
+/* MOBILE: hide the water gallery images as separate cards */
+#water .water-gallery {
+  display: none;
+}
+/* MOBILE: use the two water images as background behind the text */
+#water {
+  /* dark base so text is readable */
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.92), rgba(0,0,0,0.92)),
+    url("image7.jpg"),
+    url("image10.jpg");
+  background-repeat: no-repeat, no-repeat, no-repeat;
+
+  /* sizes of the two photos */
+  background-size: cover, 55%, 55%;
+
+  /* positions: one a bit upper-right, one a bit lower-right */
+  background-position:
+    center center,          /* gradient */
+    right 10% top 25%,      /* image7: faucet */
+    right 5% bottom 5%;     /* image10: glasses */
+}
+
+/* keep text above the background layers */
+#water .section-inner {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+
+
+
+
     }
   </style>
 </head>
@@ -751,51 +883,55 @@
 
       <!-- WHY CHOOSE US -->
     <section id="why">
-            <div class="section-inner grid-why">
+  <div class="section-inner grid-why">
 
-        <!-- LEFT: WHY CHOOSE US photo -->
-        <div>
-          <div class="img-frame">
-            <!-- image12: WHY CHOOSE US building -->
-            <img src="image12.jpg" alt="Why choose us – building and sky" />
-          </div>
-        </div>
-
-        <!-- RIGHT: overlay text on top of image13 -->
-        <div class="overlay-card">
-          <!-- IMPORTANT: use a cleaned version of this image (no original text)
-               after you edit it in Photoshop -->
-          <img src="image13.jpg" alt="Alpha Craft – plaster work background" />
-          <div class="overlay-card-content">
-            <h2>Built to Last. Crafted to Impress.</h2>
-
-            <p>
-              At Alpha Craft, we don’t cut corners—we elevate them. Every
-              project is designed with precision, built with intention, and
-              finished to last.
-            </p>
-
-            <div class="bullet-title">Precision &amp; Purpose</div>
-            <p>
-              From remodeling and renovations to painting and water system
-              upgrades, we blend craftsmanship with modern design.
-            </p>
-
-            <div class="bullet-title">Built to Last</div>
-            <p>
-              Details that hold up—door frames, trims, and finishes meant to
-              handle real life.
-            </p>
-
-            <div class="bullet-title">Designed for Living</div>
-            <p>
-              Spaces planned to make everyday living easier, cleaner, and more
-              enjoyable.
-            </p>
-          </div>
-        </div>
+    <!-- LEFT: WHY CHOOSE US photo -->
+    <div>
+      <div class="img-frame">
+        <!-- image12: WHY CHOOSE US building -->
+        <img src="image12.jpg" alt="Why choose us – building and sky" />
       </div>
-    </section>
+    </div>
+
+    <!-- RIGHT: overlay text on top of image13 -->
+    <div class="overlay-card">
+      <!-- IMPORTANT: use a cleaned version of this image (no original text)
+           after you edit it in Photoshop -->
+      <img src="image13.jpg" alt="Alpha Craft – plaster work background" />
+      <div class="overlay-card-content">
+        <!-- NEW small title line, like the WHO section -->
+        <div class="section-title" style="color:#ffffff;">Why Choose Us</div>
+
+        <h2>Built to Last. Crafted to Impress.</h2>
+
+        <p>
+          At Alpha Craft, we don’t cut corners—we elevate them. Every
+          project is designed with precision, built with intention, and
+          finished to last.
+        </p>
+
+        <div class="bullet-title">Precision &amp; Purpose</div>
+        <p>
+          From remodeling and renovations to painting and water system
+          upgrades, we blend craftsmanship with modern design.
+        </p>
+
+        <div class="bullet-title">Built to Last</div>
+        <p>
+          Details that hold up—door frames, trims, and finishes meant to
+          handle real life.
+        </p>
+
+        <div class="bullet-title">Designed for Living</div>
+        <p>
+          Spaces planned to make everyday living easier, cleaner, and more
+          enjoyable.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
        <!-- WHO WE ARE -->
@@ -932,7 +1068,7 @@
     <!-- SEASONAL SERVICES -->
     <section id="seasonal">
       <div class="section-inner">
-        <div>
+        <div class="text-wrapper">
           <div class="section-title">Seasonal Services</div>
           <h2 class="section-heading">Fall Cleanup &amp; Exterior Care</h2>
           <p>
