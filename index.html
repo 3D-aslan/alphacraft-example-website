@@ -307,11 +307,12 @@
     /* SERVICES */
 
     .services-list {
-      margin-top: 1rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
-      gap: 1.2rem;
-    }
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;   /* <-- ONE COLUMN ONLY */
+  gap: 1.2rem;
+}
+
 
     .service-card {
       padding: 1rem 1.1rem;
@@ -551,15 +552,16 @@
       display: block;
     }
 
-    input, textarea {
-      width: 100%;
-      border-radius: 10px;
-      border: 1px solid #444;
-      padding: 0.6rem 0.7rem;
-      background: #111111;
-      color: #ffffff;
-      font-size: 0.9rem;
-    }
+    input, textarea, select {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #444;
+  padding: 0.6rem 0.7rem;
+  background: #111111;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
 
     textarea {
       min-height: 120px;
@@ -793,23 +795,19 @@
   z-index: 1;
 }
 
-          /* MOBILE: slider for "We Are Taking Projects" cards */
-   .services-list {
-    width: 100% !important;
-    max-width: 100% !important;
-    display: flex !important;
-    overflow-x: auto !important;
-    gap: 1rem !important;
-    padding-bottom: 0.75rem !important;
-    scroll-snap-type: x mandatory !important;
-    -webkit-overflow-scrolling: touch;
-  }
+       /* MOBILE: vertical stack for services */
+.services-list {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 1rem !important;
+  overflow: visible !important;
+}
 
-  .service-card {
-    flex: 0 0 50% !important;     /* SEE 1 CARD + part of next */
-    min-width: 50% !important;
-    scroll-snap-align: start;
-  }
+.service-card {
+  min-width: 100% !important;
+  flex: none !important;
+}
+
 
 
 
@@ -893,10 +891,10 @@
       <nav>
         <a href="#home">Home</a>
         <a href="#services">Services</a>
-        <a href="#why">Why Us</a>
+
         <a href="#who">Who We Are</a>
-        <a href="#projects">Projects</a>
-        <a href="#water">Water Upgrades</a>
+
+
         <a href="#contact" class="btn-quote">Request a Quote</a>
       </nav>
     </div>
@@ -922,111 +920,61 @@
     </section>
 
     <!-- SERVICES -->
-    <section id="services">
-      <div class="section-inner grid-2">
-        
-          <div class="section-title">What We Do</div>
-          <h2 class="section-heading">We Are Taking Projects</h2>
-          <p>
-            From renovations to repairs, Alpha Craft handles every layer of your
-            project with precision from the first coat of paint to the final
-            finish on your floors.
-          </p>
+   <section id="services">
+  <div class="section-inner grid-2">
 
-          <ul class="pill-list">
-            <li>Renovations</li>
-            <li>Home Remodeling</li>
-            <li>Interior &amp; Exterior Painting</li>
-            <li>Drywall &amp; Plaster</li>
-            <li>Flooring</li>
-            <li>General Repairs</li>
-          </ul>
+    <!-- LEFT: all text stacked together -->
+    <div class="services-copy">
+      <h2 class="section-heading">We Are Taking Projects</h2>
+      <p>
+        From renovations to repairs, Alpha Craft handles every layer of your
+        project with precision from the first coat of paint to the final
+        finish on your floors.
+      </p>
 
-          <div class="services-list">
-            <div class="service-card">
-              <h3>Interior &amp; Exterior Painting</h3>
-              <p>Clean lines, solid coverage, and colors that make your home feel new again.</p>
-            </div>
-            <div class="service-card">
-              <h3>Renovations &amp; Remodeling</h3>
-              <p>Updates that respect the bones of your home while improving how you live in it.</p>
-            </div>
-            <div class="service-card">
-              <h3>Flooring &amp; Refinishing</h3>
-              <p>Installations and refinishing designed to stand strong for years to come.</p>
-            </div>
-            <div class="service-card">
-              <h3>Handyman &amp; Repairs</h3>
-              <p>Details that matter: frames, trim, patches, and fixes that actually last.</p>
-            </div>
-          
+      <ul class="pill-list">
+        <li>Renovations</li>
+        <li>Home Remodeling</li>
+        <li>Interior &amp; Exterior Painting</li>
+        <li>Drywall &amp; Plaster</li>
+        <li>Flooring</li>
+        <li>General Repairs</li>
+      </ul>
+
+      <div class="services-list">
+        <div class="service-card">
+          <h3>Interior &amp; Exterior Painting</h3>
+          <p>Clean lines, solid coverage, and colors that make your home feel new again.</p>
         </div>
-
-            <div class="img-stack services-images">
-          <div class="img-frame">
-            <!-- image11: WE ARE TAKING PROJECTS -->
-            <img src="image11.jpg" alt="We are taking projects – services list" />
-          </div>
-          <div class="img-frame">
-            <!-- image5: Remodel your space -->
-            <img src="image5.jpg" alt="Remodel your space – hands working on trim" />
-          </div>
+        <div class="service-card">
+          <h3>Renovations &amp; Remodeling</h3>
+          <p>Updates that respect the bones of your home while improving how you live in it.</p>
+        </div>
+        <div class="service-card">
+          <h3>Flooring &amp; Refinishing</h3>
+          <p>Installations and refinishing designed to stand strong for years to come.</p>
+        </div>
+        <div class="service-card">
+          <h3>Handyman &amp; Repairs</h3>
+          <p>Details that matter: frames, trim, patches, and fixes that actually last.</p>
         </div>
       </div>
-    </section>
+    </div>
 
-      <!-- WHY CHOOSE US -->
-    <section id="why">
-  <div class="section-inner grid-why">
-
-    <!-- LEFT: WHY CHOOSE US photo -->
-    <div>
+    <!-- RIGHT: images -->
+    <div class="img-stack services-images">
       <div class="img-frame">
-        <!-- image12: WHY CHOOSE US building -->
-        <img src="image12.jpg" alt="Why choose us – building and sky" />
+        <img src="image11.jpg" alt="We are taking projects – services list" />
+      </div>
+      <div class="img-frame">
+        <img src="image5.jpg" alt="Remodel your space – hands working on trim" />
       </div>
     </div>
 
-    <!-- RIGHT: overlay text on top of image13 -->
-    <div class="overlay-card">
-      <!-- IMPORTANT: use a cleaned version of this image (no original text)
-           after you edit it in Photoshop -->
-      <img src="image13.jpg" alt="Alpha Craft – plaster work background" />
-      <div class="overlay-card-content">
-        <!-- NEW small title line, like the WHO section -->
-        <div class="section-title" style="color:#ffffff;">Why Choose Us</div>
-
-        <h2>Built to Last. Crafted to Impress.</h2>
-
-        <p>
-          At Alpha Craft, we don’t cut corners—we elevate them. Every
-          project is designed with precision, built with intention, and
-          finished to last.
-        </p>
-
-        <div class="bullet-title">Precision &amp; Purpose</div>
-        <p>
-          From remodeling and renovations to painting and water system
-          upgrades, we blend craftsmanship with modern design.
-        </p>
-
-        <div class="bullet-title">Built to Last</div>
-        <p>
-          Details that hold up—door frames, trims, and finishes meant to
-          handle real life.
-        </p>
-
-        <div class="bullet-title">Designed for Living</div>
-        <p>
-          Spaces planned to make everyday living easier, cleaner, and more
-          enjoyable.
-        </p>
-      </div>
-    </div>
   </div>
 </section>
 
-
+     
 
        <!-- WHO WE ARE -->
     <section id="who">
@@ -1069,137 +1017,8 @@
     </section>
 
 
-    <!-- FEATURED PROJECTS -->
-    <section id="projects">
-      <div class="section-inner">
-        <div class="section-title">Featured Work</div>
-        <h2 class="section-heading">Before &amp; After Projects</h2>
-        <p>
-          From flaking paint and failing frames to clean lines and strong finishes,
-          these projects show what a careful eye and a clean coat can do.
-        </p>
+   
 
-        <div class="projects-grid">
-          <!-- Door repair -->
-          <article class="project-card">
-            <!-- image2: before + details matter collage -->
-            <img src="image2.jpg" alt="Before: peeling door and frame, with repair details" />
-            <div class="project-body">
-              <div class="project-tag">Door Restoration</div>
-              <div class="project-title">A Clean Coat. A Strong Finish.</div>
-              <p>
-                The before: flaking paint, rotted edges, and a frame ready to fail.
-                The after: solid repairs, sharp lines, and a door that finally looks
-                as strong as it is.
-              </p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <!-- image3: final door -->
-            <img src="image3.jpg" alt="After: smooth, sealed, freshly painted blue door" />
-            <div class="project-body">
-              <div class="project-tag">Finished Result</div>
-              <div class="project-title">Smooth. Strong. Sealed.</div>
-              <p>
-                A back door frame brought back to life—cleaned, repaired, and repainted
-                to stand strong for years to come.
-              </p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <!-- image4: fall cleanup -->
-            <img src="image4.jpg" alt="Fall cleanup on exterior steps covered with leaves" />
-            <div class="project-body">
-              <div class="project-tag">Seasonal Cleanup</div>
-              <div class="project-title">Fall Cleanup Done Right.</div>
-              <p>
-                Season change, space cleared. We handle the heavy lifting so you can
-                focus on living—not raking.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- WATER UPGRADES -->
-    <section id="water">
-      <div class="section-inner grid-2">
-        <div>
-          <div class="section-title">Water System Upgrades</div>
-          <h2 class="section-heading">Clean Water. Smart Home.</h2>
-          <p>
-            Clean water isn’t a luxury—it’s the standard. We upgrade your water
-            systems so every pour is clearer, safer, and easier on your home.
-          </p>
-          <ul class="water-benefits">
-            <li>Cleaner, better-tasting water in every glass.</li>
-            <li>Stronger appliances with longer lifespans.</li>
-            <li>Protection from what you can’t see in your pipes.</li>
-            <li>Smart, sustainable upgrades that prepare your home for the future.</li>
-          </ul>
-          <p class="tagline" style="margin-top:0.5rem;">
-            Sustainable. Smarter. Future-ready.
-          </p>
-        </div>
-
-        <div class="water-gallery">
-          <div class="img-frame">
-            <!-- image7: faucet running water -->
-            <img src="image7.jpg" alt="Running water from faucet" />
-          </div>
-          <div class="img-frame">
-            <!-- Collage: we use image6 / 8 / 9 / 10 stacked via CSS or you can swap later -->
-            <!-- For now, use image10: glass and carafe -->
-            <img src="image10.jpg" alt="Clean water in glass and carafe" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEASONAL SERVICES -->
-    <section id="seasonal">
-      <div class="section-inner">
-        <div class="text-wrapper">
-          <div class="section-title">Seasonal Services</div>
-          <h2 class="section-heading">Fall Cleanup &amp; Exterior Care</h2>
-          <p>
-            When the leaves drop, we step in. Our fall cleanup services clear
-            your exterior spaces so they’re ready for the next season.
-          </p>
-          <ul class="water-benefits" style="margin-top:0.8rem;">
-            <li>Leaf and debris removal from steps, walkways, and entryways.</li>
-            <li>Exterior cleaning that keeps surfaces safer and longer-lasting.</li>
-            <li>Optional touch-ups and small repairs while we’re on site.</li>
-          </ul>
-        </div>
-        <div class="img-frame">
-          <!-- reuse image4 for visual -->
-          <img src="image4.jpg" alt="Stairs with fall leaves – cleanup service" />
-        </div>
-      </div>
-    </section>
-
-    <!-- MEDIA / VIDEO -->
-    <section id="media">
-      <div class="section-inner">
-        <div class="section-title">Media</div>
-        <h2 class="section-heading">See Alpha Craft in Action</h2>
-        <p>
-          Short clips of our work, finishes, and transformations. You can replace
-          this box with your own video file or an embedded Instagram reel.
-        </p>
-        <div class="media-box" style="margin-top:1.5rem;">
-          <!-- When you have a local video file, replace the placeholder with:
-               <video src="video1.mp4" controls style="width:100%;border-radius:12px;"></video>
-          -->
-          Add your project videos here. For now this is a placeholder area ready
-          for a video player or embedded Instagram content.
-        </div>
-      </div>
-    </section>
 
     <!-- CONTACT -->
     <section id="contact">
@@ -1213,24 +1032,55 @@
           </p>
 
           <form>
-            <div>
-              <label for="name">Name</label>
-              <input id="name" type="text" placeholder="Your name" />
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input id="email" type="email" placeholder="you@example.com" />
-            </div>
-            <div>
-              <label for="phone">Phone</label>
-              <input id="phone" type="tel" placeholder="Best number to reach you" />
-            </div>
-            <div>
-              <label for="message">Project Details</label>
-              <textarea id="message" placeholder="Tell us about your project, location, and timing."></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Request</button>
-          </form>
+  <div>
+    <label for="name">Name</label>
+    <input id="name" type="text" placeholder="Your name" required />
+  </div>
+
+  <div>
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="you@example.com" required />
+  </div>
+
+  <div>
+    <label for="phone">Phone</label>
+   <input 
+  id="phone" 
+  type="tel" 
+  placeholder="Best number to reach you" 
+  required
+  pattern="^(\+?1[\s\-]?)?(\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{4})$"
+  title="Please enter a valid phone number (10 digits, optional +1)"
+  oninput="this.value = this.value.replace(/[^0-9+\s\-\(\)]/g, '');"
+/>
+
+  </div>
+
+  <div>
+    <label for="service-type">Service Type</label>
+    <select id="service-type" required>
+      <option value="" disabled selected>Select a service type</option>
+      <option value="emergency">Emergency Services</option>
+      <option value="renovation">Renovation &amp; Remodeling</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="service-detail">What do you need help with?</label>
+    <select id="service-detail" required>
+      <option value="" disabled selected>Select a service</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="message">Project Details</label>
+    <textarea id="message" placeholder="Tell us about your project, location, and timing." required></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn">Send Request</button>
+</form>
+
+
         </div>
 
         <div class="contact-info">
@@ -1257,35 +1107,74 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    // NAV HIDE / SHOW
     const nav = document.querySelector(".top-nav");
-    if (!nav) return;
+    if (nav) {
+      let lastScrollY = window.scrollY;
 
-    let lastScrollY = window.scrollY;
+      function handleScroll() {
+        const current = window.scrollY;
 
-    function handleScroll() {
-      const current = window.scrollY;
+        if (current <= 0) {
+          nav.classList.remove("hidden");
+          lastScrollY = current;
+          return;
+        }
 
-      // Always show when at very top
-      if (current <= 0) {
-        nav.classList.remove("hidden");
+        if (current > lastScrollY && current > 80) {
+          nav.classList.add("hidden");
+        } else if (current < lastScrollY) {
+          nav.classList.remove("hidden");
+        }
+
         lastScrollY = current;
-        return;
       }
 
-      if (current > lastScrollY && current > 80) {
-        // Scrolling DOWN → hide nav
-        nav.classList.add("hidden");
-      } else if (current < lastScrollY) {
-        // Scrolling UP → show nav
-        nav.classList.remove("hidden");
-      }
-
-      lastScrollY = current;
+      window.addEventListener("scroll", handleScroll);
     }
 
-    window.addEventListener("scroll", handleScroll);
+    // DEPENDENT DROPDOWNS
+    const serviceType   = document.getElementById("service-type");
+    const serviceDetail = document.getElementById("service-detail");
+
+    if (serviceType && serviceDetail) {
+      const serviceOptions = {
+        emergency: [
+          { value: "unclog-drain",   label: "Unclogging / Drain Clearing" },
+          { value: "plumbing-leaks", label: "Plumbing leaks & burst pipes" },
+          { value: "electrician",    label: "Emergency electrical issue" },
+          { value: "plumbing",       label: "General plumbing issue" },
+          { value: "grease-traps",   label: "Grease trap cleaning" }
+        ],
+        renovation: [
+          { value: "home-reno",      label: "Whole-home renovation" },
+          { value: "kitchen-reno",   label: "Kitchen renovation" },
+          { value: "bathroom-reno",  label: "Bathroom renovation" },
+          { value: "flooring",       label: "Flooring & stairs" },
+          { value: "windows-doors",  label: "Windows & doors" },
+          { value: "office-reno",    label: "Office / commercial renovation" }
+        ]
+      };
+
+      function updateServiceDetails() {
+        const type = serviceType.value;
+        serviceDetail.innerHTML = '<option value="">Select a service</option>';
+
+        if (!serviceOptions[type]) return;
+
+        serviceOptions[type].forEach(function (opt) {
+          const optionEl = document.createElement("option");
+          optionEl.value = opt.value;
+          optionEl.textContent = opt.label;
+          serviceDetail.appendChild(optionEl);
+        });
+      }
+
+      serviceType.addEventListener("change", updateServiceDetails);
+    }
   });
 </script>
+
 
 
 
