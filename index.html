@@ -225,6 +225,11 @@
       letter-spacing: 0.12em;
       margin-bottom: 1rem;
     }
+	
+	.hero-main-title {
+  font-size: 1.6rem;
+}
+
 
     .hero-subtitle {
       max-width: 440px;
@@ -333,11 +338,29 @@
 
 
     .service-card {
-      padding: 1rem 1.1rem;
-      border-radius: 16px;
-      border: 1px solid #e3e3e3;
-      background: #ffffff;
-    }
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  border: 1px solid #e3e3e3;
+  background: #ffffff;
+}
+
+.service-icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  margin-top: 0px;
+}
+
+.service-icon img {
+  width: 105%;
+  height: 150%;
+  object-fit: contain;
+}
+
+
 
     .service-card h3 {
       font-size: 0.95rem;
@@ -884,6 +907,9 @@
 }
 
   
+.hero-main-title {
+  font-size: 1.4rem;
+}
 
 
 
@@ -913,7 +939,7 @@
         <a href="#who">Who We Are</a>
 
 
-        <a href="#contact" class="btn-quote">Request a Quote</a>
+        <a href="#contact" class="btn-quote">Request a Free Estimate</a>
       </nav>
     </div>
   </header>
@@ -923,11 +949,11 @@
     <section id="home">
       <div class="hero">
         <div class="hero-inner">
-          <div class="hero-kicker">Boston · Massachusetts</div>
-          <h1 class="hero-title">Fresh Colors.<br />Fresh Start.</h1>
+          <div class="hero-kicker">General Contractor in Boston · MA</div>
+          <h1 class="hero-title hero-main-title">Renovation • Remodeling • Repairs • Commercial & Residential</h1>
           <p class="hero-subtitle">
-            Renovations, remodeling, painting, and water system upgrades that
-            turn everyday spaces into places you actually want to come home to.
+            One contractor for everything. From full renovations to small repairs.
+			Licensed, insured, and trusted across Boston & surrounding areas.
           </p>
           <div class="hero-actions">
             <a href="#contact" class="hero-main-btn">Request a Quote</a>
@@ -960,22 +986,63 @@
       </ul>
 
       <div class="services-list">
-        <div class="service-card">
-          <h3>Interior &amp; Exterior Painting</h3>
-          <p>Clean lines, solid coverage, and colors that make your home feel new again.</p>
-        </div>
-        <div class="service-card">
-          <h3>Renovations &amp; Remodeling</h3>
-          <p>Updates that respect the bones of your home while improving how you live in it.</p>
-        </div>
-        <div class="service-card">
-          <h3>Flooring &amp; Refinishing</h3>
-          <p>Installations and refinishing designed to stand strong for years to come.</p>
-        </div>
-        <div class="service-card">
-          <h3>Handyman &amp; Repairs</h3>
-          <p>Details that matter: frames, trim, patches, and fixes that actually last.</p>
-        </div>
+	  
+	  
+	  
+<div class="service-card">
+  <div class="service-icon">
+    <img src="logo2.png" alt="">
+  </div>
+  <div>
+    <h3>Full House Renovation</h3>
+    <p>Complete renovations that transform your entire home from top to bottom.</p>
+  </div>
+</div>
+
+
+
+<div class="service-card">
+  <div class="service-icon">
+    <img src="logo3.png" alt="">
+  </div>
+  <div>  
+  <h3>Interior &amp; Exterior Painting</h3>
+  <p>Professional painting services that refresh and protect your home inside and out.</p>
+</div>
+</div>
+
+
+<div class="service-card">
+  <div class="service-icon">
+    <img src="logo1.png" alt="">
+  </div>
+  <div>
+  <h3>Flooring &amp; Tiling</h3>
+  <p>Durable and precise flooring and tile installations built for everyday living.</p>
+</div>
+</div>
+
+<div class="service-card">
+  <div class="service-icon">
+    <img src="logo4.png" alt="">
+  </div>
+  <div>
+  <h3>Decking &amp; Masonry</h3>
+  <p>Strong, long-lasting outdoor and structural work crafted with quality materials.</p>
+</div>
+</div>
+
+<div class="service-card">
+  <div class="service-icon">
+    <img src="logo5.png" alt="">
+  </div>
+  <div>
+  <h3>Handyman &amp; Repairs</h3>
+  <p>Reliable repairs and small fixes that keep your home working as it should.</p>
+</div>
+</div>
+		
+		
       </div>
     </div>
 
