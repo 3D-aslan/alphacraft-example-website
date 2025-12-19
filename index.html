@@ -337,6 +337,32 @@
 }
 
 
+#clients {
+  background: #fafafa;
+  padding: 3rem 1rem;
+}
+
+.clients-logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+  margin-top: 1.5rem;
+}
+
+.clients-logos img {
+  max-width: 120px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.clients-logos img:hover {
+  opacity: 1;
+}
+
+
+
     .service-card {
   display: flex;
   align-items: center;  
@@ -1014,6 +1040,20 @@
 
 <div class="service-card">
   <div class="service-icon">
+    <img src="logo6.png" alt="">
+  </div>
+  <div>
+    <h3>HVAC Repair &amp; Maintenance</h3>
+    <p>
+      Reliable heating, ventilation and air conditioning repairs, maintenance, and system servicing to keep your home comfortable year-round.
+    </p>
+  </div>
+</div>
+
+
+
+<div class="service-card">
+  <div class="service-icon">
     <img src="logo1.png" alt="">
   </div>
   <div>
@@ -1059,7 +1099,21 @@
   </div>
 </section>
 
-     
+     <section id="clients">
+  <div class="section-inner">
+    <div class="section-title">Trusted By</div>
+
+    <div class="clients-logos">
+      <img src="HueBoston.png" alt="Hue Boston">
+      <img src="Zuma.png" alt="Zuma">
+      <img src="Greco.png" alt="Greco">
+      <img src="Krasi.png" alt="Krasi">
+      <img src="Kaia.png" alt="Kaia">
+      <img src="BarVlaha.png" alt="Bar Vlaha">
+    </div>
+  </div>
+</section>
+
 
        <!-- WHO WE ARE -->
     <section id="who">
@@ -1229,7 +1283,8 @@
           { value: "plumbing-leaks", label: "Plumbing leaks & burst pipes" },
           { value: "electrician",    label: "Emergency electrical issue" },
           { value: "plumbing",       label: "General plumbing issue" },
-          { value: "grease-traps",   label: "Grease trap cleaning" }
+          { value: "grease-traps",   label: "Grease trap cleaning" },
+  { value: "hvac-emergency", label: "Emergency HVAC (No heat / No AC)" }
         ],
         renovation: [
           { value: "home-reno",      label: "Whole-home renovation" },
@@ -1237,7 +1292,9 @@
           { value: "bathroom-reno",  label: "Bathroom renovation" },
           { value: "flooring",       label: "Flooring & stairs" },
           { value: "windows-doors",  label: "Windows & doors" },
-          { value: "office-reno",    label: "Office / commercial renovation" }
+          { value: "office-reno",    label: "Office / commercial renovation" },
+  { value: "hvac",           label: "HVAC repair & maintenance" }
+		  
         ]
       };
 
